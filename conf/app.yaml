@@ -1,0 +1,17 @@
+App:
+  api:
+    port: 6666
+Common:
+  logpath: /data/log/
+Database:
+  corp:
+    host: 10.108.213.137
+    port: 3306
+    username: root
+    pass: t00R
+    charset: utf8
+Redis:
+  corp:
+    host: 10.208.50.49
+    port: 1616
+    pass: 7b5f1e47703e914d

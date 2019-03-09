@@ -1,0 +1,22 @@
+package retcode
+
+const (
+	// SUCCESS 成功
+	SUCCESS = 0
+	//NETWORK_EXCEPTION 网络异常，请重试
+	NETWORK_EXCEPTION = 1
+	//SYSTEM_EXCEPTION 网络异常，请重试
+	SYSTEM_EXCEPTION = 2
+	//DB_EXCEPTION 数据库，请重试
+	DB_EXCEPTION = 3
+	// PARAM_ERROR 参数错误，自己提供文案
+	PARAM_ERROR = 4
+	// UPDATE_FAILED 更新失败
+	UPDATE_FAILED = 5
+	// PROCESS_LOCK 操作频繁请稍后再试
+	PROCESS_LOCK = 6
+	// ILLEGAL_REQUEST 非法请求
+	ILLEGAL_REQUEST = 7
+    // SPAM_ACTION 操作频繁
+    SPAM_ACTION = 8
+)

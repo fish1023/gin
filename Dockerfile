@@ -7,6 +7,6 @@ WORKDIR /data/www/captcha
 COPY ./captcha ./
 COPY ./conf  ./conf/
 
-EXPOSE 6666
+EXPOSE 80
 
 ENTRYPOINT ["./captcha"]

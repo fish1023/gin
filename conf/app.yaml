@@ -1,6 +1,6 @@
 App:
   api:
-    port: 6666
+    port: 80
 Common:
   logpath: /data/log/
 Database:

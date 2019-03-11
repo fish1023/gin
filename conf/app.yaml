@@ -1,8 +1,10 @@
 App:
-  api:
+  online:
     port: 80
-Common:
-  logpath: /data/log/
+    logPath: /data/log/
+  dev:
+    port: 6666
+    logPath: /home/yushang/logs/golang/captcha/
 Database:
   corp:
     host: 10.108.213.137

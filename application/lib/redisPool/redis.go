@@ -15,12 +15,12 @@ var RPool *redis.Pool
 // Setup 处理redis命令
 func init() {
 	conf := setting.Setting.Redis
-	idc := helper.GetIDC()
+	idc := helper.IDC
 	rConf := conf[idc]
 
 	RPool = &redis.Pool{
 		MaxIdle:     1,
-		MaxActive:   0,
+		MaxActive:   10,
 		IdleTimeout: 180 * time.Second,
 		Dial: func() (redis.Conn, error) {
 			c, err := redis.Dial("tcp", rConf.Host+":"+rConf.Port)

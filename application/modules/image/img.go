@@ -11,15 +11,9 @@ import (
     "captcha/application/lib/captcha"
 )
 
-type Config struct {
-    Id string       `form:"key" json:"id"`
-    App string       `form:"app" json:"app"`
-    Value string     `form:"code" json:"value"`
-    Mode string       `form:"m" json:"m"`
-}
 
 func CaptchaCreate(c *gin.Context) {
-    var params Config
+    var params captcha.Config
     appG := app.Gin{C:c}
     c.DefaultQuery("m",captcha.DEFAULT_MODE)
     c.ShouldBind(&params)
@@ -30,7 +24,7 @@ func CaptchaCreate(c *gin.Context) {
     }
 
     k := params.App + ":" + params.Id
-    config := captcha.GetConfigByMode(params.Mode)
+    config := captcha.GetConfig(&params)
 
     //GenerateCaptcha 第一个参数为空字符串,包会自动在服务器一个随机种子给你产生随机uiid.
 	_, cap := base64Captcha.GenerateCaptcha(k, config)
@@ -42,7 +36,7 @@ func CaptchaCreate(c *gin.Context) {
 }
 
 func CaptchaVerify(c *gin.Context) {
-    var params Config
+    var params captcha.Config
     appG := app.Gin{C:c}
     c.ShouldBind(&params)
 
@@ -56,7 +50,7 @@ func CaptchaVerify(c *gin.Context) {
         appG.ErrorByCode(retcode.SPAM_ACTION)
         return
     }
-    base64Captcha.VerifyCaptcha(k, params.Value)
+
     verifyResult := base64Captcha.VerifyCaptcha(k, params.Value)
     if !verifyResult {
         // 错误次数限制

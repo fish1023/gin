@@ -1,7 +1,7 @@
 package logger
 
 import (
-	"captcha/application/setting"
+	"captcha/application/lib/helper"
 	"os"
 	"time"
 )
@@ -67,5 +67,5 @@ func (l *LogFish) appendLog(msg string, level string) {
 
 // getLogPath 获取级别对应的log文件
 func getLogPath(level string) string {
-	return setting.Setting.Common.LogPath + LEVEL_MAP[level]
+	return helper.GetLogPath() + LEVEL_MAP[level]
 }

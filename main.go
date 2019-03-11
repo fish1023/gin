@@ -2,11 +2,11 @@ package main
 
 import (
     "captcha/application/router"
-    "captcha/application/setting"
+    "captcha/application/lib/helper"
 )
 
 func main() {
     r := router.InitRouter()
-    App := setting.Setting.App
-    r.Run(":" + App.API.Port)
+    port := helper.GetPort()
+    r.Run(":" + port)
 }

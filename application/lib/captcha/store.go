@@ -37,10 +37,10 @@ func (p *CustomizeRdsStore) Set(id string, code string) {
 func (p *CustomizeRdsStore) Get(id string,clear bool) string {
     c := p.redisClient.Get();
     defer c.Close()
-    k := CAPTCHA_PREFIX + id;
+    k := CAPTCHA_PREFIX + id
     code, err := redis.String(c.Do("get",k))
     if err != nil {
-        l.Error("get code error id:" + id +  "errmsg:" + err.Error())
+        l.Error("get code error id:" + k +  "errmsg:" + err.Error())
     }
 
     if clear {

@@ -23,30 +23,21 @@ type Redis struct {
 	Pass string `yaml:"pass"`
 }
 
-// APISys api模块配置
-type APISys struct {
-	Port string `yaml:"port"`
-}
-
 // App 系统模块配置
 type App struct {
-	API APISys
-}
-
-type Common struct {
-	LogPath string `yaml:"logpath"`
+	Port string `yaml:"port"`
+    LogPath string `yaml:"logPath"`
 }
 
 //Config   系统配置配置
 type Config struct {
 	Database map[string]Database `yaml:"Database"`
 	Redis    map[string]Redis    `yaml:"Redis"`
-	App      App                 `yaml:"App"`
-	Common   Common              `yaml:"Common"`
+	App      map[string]App      `yaml:"App"`
 }
 
 // Setting is
-var Setting = &Config{}
+var Setting = Config{}
 
 // init is init config
 func init() {

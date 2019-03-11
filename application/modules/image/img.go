@@ -30,17 +30,7 @@ func CaptchaCreate(c *gin.Context) {
     }
 
     k := params.App + ":" + params.Id
-    var config interface{}
-    switch params.Mode {
-    case captcha.MODE_AUDIO:
-        config = captcha.ConfigAudio
-    case captcha.MODE_DIGIT:
-        config = captcha.ConfigDigit
-    case captcha.MODE_CHARACTER:
-        config = captcha.ConfigCharacter
-    default:
-        config = captcha.ConfigDigit
-    }
+    config := captcha.GetConfigByMode(params.Mode)
 
     //GenerateCaptcha 第一个参数为空字符串,包会自动在服务器一个随机种子给你产生随机uiid.
 	_, cap := base64Captcha.GenerateCaptcha(k, config)
@@ -61,6 +51,7 @@ func CaptchaVerify(c *gin.Context) {
         return
     }
     k := params.App + ":" +params.Id
+    // 频率限制
     if limited := tool.Spam(captcha.SPAM_PREFIX + k,captcha.MAX_SPAM,captcha.SPAM_TIME);!limited {
         appG.ErrorByCode(retcode.SPAM_ACTION)
         return
@@ -68,6 +59,7 @@ func CaptchaVerify(c *gin.Context) {
     base64Captcha.VerifyCaptcha(k, params.Value)
     verifyResult := base64Captcha.VerifyCaptcha(k, params.Value)
     if !verifyResult {
+        // 错误次数限制
         if num:= captcha.IncrBadCode(k);num > captcha.ERROR_MAX {
             captcha.Del(k)
         }

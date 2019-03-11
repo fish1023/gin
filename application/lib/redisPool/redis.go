@@ -20,7 +20,7 @@ func init() {
 
 	RPool = &redis.Pool{
 		MaxIdle:     1,
-		MaxActive:   10,
+		MaxActive:   0,
 		IdleTimeout: 180 * time.Second,
 		Dial: func() (redis.Conn, error) {
 			c, err := redis.Dial("tcp", rConf.Host+":"+rConf.Port)

@@ -17,12 +17,12 @@ const SPAM_PREFIX = "captcha:spam:"
 const ERROR_PREFIX = "captcha:err:"
 const ERROR_MAX = 10
 
-var ConfigAudio = base64Captcha.ConfigAudio{
+var configAudio = base64Captcha.ConfigAudio{
     CaptchaLen: DEFAULT_LEN,
     Language:   "zh",
 }
 
-var ConfigCharacter = base64Captcha.ConfigCharacter{
+var configCharacter = base64Captcha.ConfigCharacter{
     Height:             60,
     Width:              240,
     //const CaptchaModeNumber:数字,CaptchaModeAlphabet:字母,CaptchaModeArithmetic:算术,CaptchaModeNumberAlphabet:数字字母混合.
@@ -38,10 +38,24 @@ var ConfigCharacter = base64Captcha.ConfigCharacter{
     CaptchaLen:         DEFAULT_LEN,
 }
 
-var ConfigDigit = base64Captcha.ConfigDigit{
+var configDigit = base64Captcha.ConfigDigit{
     Height:     80,
     Width:      240,
     MaxSkew:    0.7,
     DotCount:   80,
     CaptchaLen: DEFAULT_LEN,
+}
+
+func GetConfigByMode(mode string) (config interface{}) {
+    switch mode {
+    case MODE_AUDIO:
+        config = configAudio
+    case MODE_DIGIT:
+        config = configDigit
+    case MODE_CHARACTER:
+        config = configCharacter
+    default:
+        config = configDigit
+    }
+    return
 }

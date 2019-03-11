@@ -15,3 +15,11 @@ Redis:
     host: 10.208.50.49
     port: 1616
     pass: 7b5f1e47703e914d
+  bjcc:
+    host: 10.142.228.31
+    port: 6381
+    pass: 71922dd335116341
+  bjcc:
+    host: 10.208.255.226
+    port: 6381
+    pass: 71922dd335116341

@@ -19,4 +19,6 @@ const (
 	ILLEGAL_REQUEST = 7
     // SPAM_ACTION 操作频繁
     SPAM_ACTION = 8
+    // CODE_EMPTY 请重新获取验证码
+    CODE_EMPTY = 9
 )

@@ -38,7 +38,7 @@
   cd /path/项目名
   make glide
   make vendor
-  make captcha
+  make img
 ```
 
 2. 提交到release分支&Hulk自动集成镜像

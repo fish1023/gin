@@ -1,7 +1,7 @@
 package image
 
 import (
-    //"fmt"
+    // "fmt"
     "strconv"
     "github.com/mojocn/base64Captcha"
     "github.com/gin-gonic/gin"
@@ -56,6 +56,8 @@ func CaptchaVerify(c *gin.Context) {
         // 错误次数限制
         if num:= captcha.IncrBadCode(k);num > captcha.ERROR_MAX {
             captcha.Del(k)
+            appG.ErrorByCode(retcode.CODE_EMPTY)
+            return
         }
     }
     r := strconv.FormatBool(verifyResult)

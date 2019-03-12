@@ -13,11 +13,18 @@ type Gin struct {
 
 // Response gin 返回值函数
 func (g *Gin) Success(data interface{}) {
-	g.C.JSON(200, gin.H{
-		"code": retcode.SUCCESS,
+    r := gin.H{
+        "code": retcode.SUCCESS,
 		"msg":  retcode.GetMsg(retcode.SUCCESS),
 		"data": data,
-	})
+    }
+    if cb := g.C.Query("callback");cb != "" {
+        g.C.JSONP(200,r)
+    } else {
+        g.C.JSON(200,r)
+    }
+
+    g.C.Abort()
 }
 
 // ErrorByCode gin 返回错误

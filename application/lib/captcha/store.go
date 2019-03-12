@@ -28,6 +28,7 @@ func (p *CustomizeRdsStore) Set(id string, code string) {
     errK := ERROR_PREFIX + id;
     _, err := redis.String(c.Do("setex",k,EXPIRE_TIME,code))
     c.Do("setex",errK,EXPIRE_TIME,0)
+    l.Info("set code id:" + k + "code" + code)
     if err != nil {
         fmt.Println(err)
         l.Error("set code error id:" + k + " code:" + code + " errmsg:" + err.Error() )

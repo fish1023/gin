@@ -16,21 +16,21 @@ var RPool *redis.Pool
 func init() {
 	conf := setting.Setting.Redis
 	idc := helper.IDC
-	rConf := conf[idc]
+	idcConf := conf[idc]
+    fmt.Printf("redis config %+v",idcConf)
+	// RPool = &redis.Pool{
+	// 	MaxIdle:     1,
+	// 	MaxActive:   10,
+	// 	IdleTimeout: 180 * time.Second,
+	// 	Dial: func() (redis.Conn, error) {
+	// 		c, err := redis.Dial("tcp", rConf.Host+":"+rConf.Port)
+	// 		if err != nil {
+	// 			return nil, err
+	// 		}
 
-	RPool = &redis.Pool{
-		MaxIdle:     1,
-		MaxActive:   10,
-		IdleTimeout: 180 * time.Second,
-		Dial: func() (redis.Conn, error) {
-			c, err := redis.Dial("tcp", rConf.Host+":"+rConf.Port)
-			if err != nil {
-				return nil, err
-			}
-
-			c.Do("AUTH", rConf.Pass)
-            return c, nil
-		},
-	}
+	// 		c.Do("AUTH", rConf.Pass)
+    //         return c, nil
+	// 	},
+	// }
     fmt.Println("redis is ready")
 }

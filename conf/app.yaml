@@ -14,14 +14,32 @@ Database:
     charset: utf8
 Redis:
   corp:
-    host: 10.208.50.49
-    port: 1616
-    pass: 7b5f1e47703e914d
+    master:
+      host: 10.208.50.49
+      port: 1616
+      pass: 7b5f1e47703e914d
+    slave:
+      -
+        host: 10.208.50.49
+        port: 1616
+        pass: 7b5f1e47703e914d
   bjcc:
-    host: 10.142.228.31
-    port: 6381
-    pass: 71922dd335116341
+    master:
+      host: 10.208.251.234
+      port: 5382
+      pass: 702c4d9342370b82
+    slave:
+      -
+        host: 10.142.234.19
+        port: 5382
+        pass: 702c4d9342370b82
   bjyt:
-    host: 10.208.255.226
-    port: 6381
-    pass: 71922dd335116341
+    master:
+      host: 10.208.251.234
+      port: 5382
+      pass: 702c4d9342370b82
+    slave:
+      -
+        host: 10.142.234.19
+        port: 5382
+        pass: 702c4d9342370b82

@@ -16,11 +16,17 @@ type Database struct {
 	Charset  string `yaml:"charset"`
 }
 
-// Redis redis配置
-type Redis struct {
+// RedisServer redis配置
+type RedisServer struct {
 	Host string `yaml:"host"`
 	Port string `yaml:"port"`
 	Pass string `yaml:"pass"`
+}
+
+// Redis
+type RedisIDC struct {
+    Master map[string]string   `yaml:"master"`
+    Slave  []map               `yaml:"master"`
 }
 
 // App 系统模块配置
@@ -32,7 +38,7 @@ type App struct {
 //Config   系统配置配置
 type Config struct {
 	Database map[string]Database `yaml:"Database"`
-	Redis    map[string]Redis    `yaml:"Redis"`
+	Redis    map[string]RedisIDC `yaml:"Redis"`
 	App      map[string]App      `yaml:"App"`
 }
 

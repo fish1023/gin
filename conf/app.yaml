@@ -21,7 +21,7 @@ Redis:
     host: 10.142.228.31
     port: 6381
     pass: 71922dd335116341
-  bjcc:
+  bjyt:
     host: 10.208.255.226
     port: 6381
     pass: 71922dd335116341

@@ -30,7 +30,7 @@ func (p *CustomizeRdsStore) Set(id string, code string) {
     c.Do("setex",errK,EXPIRE_TIME,0)
     if err != nil {
         fmt.Println(err)
-        l.Error("set code error id:" + id + " code:" + code + " errmsg:" + err.Error() )
+        l.Error("set code error id:" + k + " code:" + code + " errmsg:" + err.Error() )
     }
 }
 

@@ -1,6 +1,6 @@
 # 功能
 
-- 验证码服务
+- gin框架
 
 # 项目目录结构
 
@@ -38,16 +38,4 @@
   cd /path/项目名
   make glide
   make vendor
-  make img
 ```
-
-2. 提交到release分支&Hulk自动集成镜像
-
-```bash
-  git checkout release
-  git merge master
-  git add .
-  git commit -m "publish new version"
-
-```
-3. Hulk更新应用镜像

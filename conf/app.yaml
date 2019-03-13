@@ -19,27 +19,24 @@ Redis:
       port: 1616
       pass: 7b5f1e47703e914d
     slave:
-      -
-        host: 10.208.50.49
-        port: 1616
-        pass: 7b5f1e47703e914d
+      host: 10.208.50.50
+      port: 1616
+      pass: 7b5f1e47703e914d
   bjcc:
     master:
       host: 10.208.251.234
       port: 5382
       pass: 702c4d9342370b82
     slave:
-      -
-        host: 10.142.234.19
-        port: 5382
-        pass: 702c4d9342370b82
+      host: 10.142.234.19
+      port: 5382
+      pass: 702c4d9342370b82
   bjyt:
     master:
       host: 10.208.251.234
       port: 5382
       pass: 702c4d9342370b82
     slave:
-      -
-        host: 10.142.234.19
-        port: 5382
-        pass: 702c4d9342370b82
+      host: 10.142.234.19
+      port: 5382
+      pass: 702c4d9342370b82

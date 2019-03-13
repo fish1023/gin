@@ -4,10 +4,9 @@ import (
     "github.com/gomodule/redigo/redis"
 )
 
+// 累计错误次数增长
 func IncrBadCode(id string) int{
-    c := redisPool.RPool.Get();
-    defer c.Close()
     k := ERROR_PREFIX + id
-    num,_ := redis.Int(c.Do("incr",k))
+    num,_ := redis.Int(redisPool.Pool.Deal("incr",k))
     return num
 }

@@ -15,7 +15,7 @@ BINARY_CAPTCHA=captcha
 img:
 	$(GOBUILD)  -o "$(GOBIN)/$(BINARY_CAPTCHA)"
 	@echo "Done building."
-	@echo "Run $(GOBIN)/$(BINARY_API) to launch captcha modules"
+	@echo "Run $(GOBIN)/$(BINARY_CAPTCHA) to launch captcha modules"
 
 clean:
 	$(GOCLEAN)

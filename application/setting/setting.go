@@ -25,14 +25,14 @@ type RedisServer struct {
 
 // Redis
 type RedisIDC struct {
-    Master map[string]string   `yaml:"master"`
-    Slave  []map               `yaml:"master"`
+    Master RedisServer   `yaml:"master"`
+    Slave  RedisServer   `yaml:"slave"`
 }
 
 // App 系统模块配置
 type App struct {
 	Port string `yaml:"port"`
-    LogPath string `yaml:"logPath"`
+	LogPath string `yaml:"logPath"`
 }
 
 //Config   系统配置配置

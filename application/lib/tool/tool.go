@@ -4,13 +4,12 @@ import (
     "github.com/gomodule/redigo/redis"
 )
 
+// Spam 访问频率控制
 func Spam(key string,times int,expire int) (b bool){
-    c := redisPool.RPool.Get()
-    defer c.Close()
-    value,_ := redis.Int(c.Do("incr",key))
-    t,_ := redis.Int(c.Do("ttl",key))
+    value,_ := redis.Int(redisPool.Pool.Deal("incr",key))
+    t,_ := redis.Int(redisPool.Pool.Deal("ttl",key))
     if value == 1 || t == -1 {
-        c.Do("expire",key,expire)
+        redisPool.Pool.Deal("expire",key,expire)
     }
 
     if value > times {
